@@ -4,8 +4,8 @@ function cArt()
 {
     
     //imagens
-    this.logo = 1;//7;
-    this.title = 2;//13;    
+    this.logo = 1;
+    this.title = 2;
     this.bg=0;    
 	this.worldmap=3;
     
@@ -14,18 +14,7 @@ function cArt()
     
     var srcs = [
                 "img/bgsheet.png",
-                //"img/endscene.gif",
-                //"img/enemysheet.png",
-                //"img/firemanuelsheet.png",
-                //"img/font.gif",
-                //"img/gameovergost.gif",
-                //"img/itemsheet.png",
                 "img/logo.png",
-                //"img/mapsheet.png",
-                //"img/manuelsheet.png",
-                //"img/particlesheet.png",
-                //"img/racoonmanuelsheet.png",
-                //"img/smallmanuelsheet.png",
                 "img/title.png",
                 "img/worldmap.png"     
         ];
@@ -62,11 +51,6 @@ function cArt()
             images[x]=[source.height / ySize];
             for (var y = 0; y < source.height / ySize; y++)
             {
-/*                var image = new Image(xSize, ySize);
-                var g = image.getContext("2d");
-                
-                g.drawImage(source, x * xSize, y * ySize, 0,0,xSize,ySize);
-  */
                 var cv = document.createElement("canvas");
                 cv.width=xSize;
                 cv.height= ySize;
@@ -81,8 +65,6 @@ function cArt()
                 xSize,
                 ySize);
 
-            //    var image = new Image(xSize, ySize);
-            //    image.src=cv.toDataURL();
                 images[x][y] = cv;
             }
         }
