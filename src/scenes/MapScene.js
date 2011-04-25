@@ -359,8 +359,8 @@ function MapScene(compJogo)
         var dec = new ImprovedNoise(0);
 
         //largura e altura com base nos 320*240 com tiles de 16 pixeis
-        var width = 320 / 16 + 1;
-        var height = 240 / 16 + 1;
+        var width = 320 / 16;// + 1;
+        var height = 240 / 16;// + 1;
                 
         level = [width];
         data = [width];
