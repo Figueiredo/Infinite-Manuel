@@ -1,0 +1,31 @@
+Milestone 1:
+-Basic game structure (done)
+-Loader Scene and resource loading (done)
+
+Milestone 2:
+-Title Scene with animation (done)
+
+Milestone 3:
+-Map Scene with animation (done)
+-Moving in Map Scene (done)
+-Win Scene
+-Global Generic bitmap font drawing
+
+MileStone 4:
+-Level Scene rendering
+
+MileStone 5:
+-Playable Level Scene
+
+MileStone 6:
+-Sound Support
+-Music Support
+-Full game adapted
+
+MileStone 7++:
+-Optimization
+-Improvements
+-Detail further milestones as needed
+
+Issues:
+-Second Background only rendering properly in Chrome
