@@ -9,7 +9,7 @@ Milestone 3:
 -Map Scene with animation (done)
 -Moving in Map Scene (done)
 -Win Scene (done)
--Global Generic bitmap font drawing
+-Global Generic bitmap font drawing (done)
 
 MileStone 4:
 -Level Scene rendering
@@ -28,4 +28,5 @@ MileStone 7++:
 -Detail further milestones as needed
 
 Issues:
--Second Background only rendering properly in Chrome
+-Second Background in the Title Scene is only rendering properly in Chrome
+-Help bubble in the Map Scene is not displaying correcly

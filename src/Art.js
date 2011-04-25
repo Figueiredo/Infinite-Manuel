@@ -9,6 +9,7 @@ function cArt()
     this.title = 2;    
 	this.map=3;
     this.end=4;
+    this.font=5;
     
     var status=false;    
     var loaded=0;
@@ -18,7 +19,8 @@ function cArt()
                 "img/logo.png",
                 "img/title.png",
                 "img/worldmap.png",
-                "img/endscene.png"
+                "img/endscene.png",
+                "img/font.png"
         ];
         
     var total=srcs.length;        
@@ -78,7 +80,6 @@ function cArt()
                 images[x][y] = cv;
             }
         }
-        //alert(imgID+" .. "+images);
         return images;
     };    
     
@@ -89,6 +90,7 @@ function cArt()
         this.img[this.bg]=this.cutImage(this.bg,32,32);
         this.img[this.map]=this.cutImage(this.map,16,16);
         this.img[this.end]=this.cutImage(this.end,96,96);
+        this.img[this.font]=this.cutImage(this.font,8,8);
     };
     
     

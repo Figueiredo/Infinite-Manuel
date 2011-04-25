@@ -34,10 +34,9 @@ function WinScene(compJogo)
     this.render= function(ctx,alfa)
     {
         ctx.fillStyle = '#8080a0';
-        ctx.fillRect(0, 0, 320, 240);   
-        //g.drawImage(Art.endScene[tick/24%2][0], 160-48, 100-48, null);        
+        ctx.fillRect(0, 0, 320, 240);           
         ctx.drawImage(Art.img[Art.end][Math.floor((tick/24)%2)][0],0,0,96,96, 160-48, 100-48, 96,96);
-        //drawString(g, scrollMessage, 160-scrollMessage.length()*4, 160, 0);        
+        drawString(ctx, scrollMessage, 160-scrollMessage.length*4, 160, 0);        
         
     };
     

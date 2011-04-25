@@ -618,9 +618,9 @@ function MapScene(compJogo)
             }
         }
 */        
-        //drawStringDropShadow(g, "MARIO " + df.format(Manuel.lives), 0, 0, 7);
+        drawStringDropShadow(g, "MANUEL " + /*df.format(Manuel.lives)*/ "03", 0, 0, 7);
 
-        //drawStringDropShadow(g, "WORLD "+(worldNumber+1), 32, 0, 7);
+        drawStringDropShadow(g, "WORLD "+(worldNumber+1), 32, 0, 7);
     };
     
     this.levelWon=function()
