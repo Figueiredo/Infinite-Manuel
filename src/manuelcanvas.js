@@ -20,31 +20,62 @@ function manuelcanvas()
     
     //cria a cena inicial
     var cena = null;
+    var mapScene = null; //world map
     
+    this.win=function()
+    {
+        cena = new scene_basic();
+        cena.init();
+    };
+    
+    //sends game to the titlescreen
     this.toTitle=function()
     {
         cena= new TitleScene(this);
         cena.init();
     };    
     
+    
+    //starts the game and pushs to the map scene
     this.startGame=function()
-    {
-        cena= new scene_basic();
+    {        
+        cena = mapScene;
         cena.init();        
     };
-        
+
+    //starts the game engine
     this.start = function()
     {
+        //loads resources
         cena = new LoaderScene(this);
         cena.init();
         
-        //define as funções de controlo
+        //defines the world map
+        mapScene= new MapScene(this);
+        
+        //define as funÃ§Ãµes de controlo
         document.onkeydown=function(e)
         {
             if(e.keyCode==32)
             {
                 cena.toggleKey(manuelC.SPACE,true);
             }
+            if(e.keyCode==37)
+            {
+                cena.toggleKey(manuelC.KEY_LEFT,true);
+            }
+            if(e.keyCode==38)
+            {
+                cena.toggleKey(manuelC.KEY_UP,true);
+            }
+            if(e.keyCode==39)
+            {
+                cena.toggleKey(manuelC.KEY_RIGHT,true);
+            }
+            if(e.keyCode==40)
+            {
+                cena.toggleKey(manuelC.KEY_DOWN,true);
+            }            
         };
         
         document.onkeyup=function(e)
@@ -53,6 +84,22 @@ function manuelcanvas()
             {
                 cena.toggleKey(manuelC.SPACE,false);
             }
+            if(e.keyCode==37)
+            {
+                cena.toggleKey(manuelC.KEY_LEFT,false);
+            }
+            if(e.keyCode==38)
+            {
+                cena.toggleKey(manuelC.KEY_UP,false);
+            }
+            if(e.keyCode==39)
+            {
+                cena.toggleKey(manuelC.KEY_RIGHT,false);
+            }
+            if(e.keyCode==40)
+            {
+                cena.toggleKey(manuelC.KEY_DOWN,false);
+            }            
         };
 
         //main loop   
@@ -62,6 +109,7 @@ function manuelcanvas()
     
     };
     
+    //main game loop
     var mainloop=function()
     {
         
@@ -84,14 +132,14 @@ function manuelcanvas()
             }
         }
 
-        var alpha = (now * TICKS_PER_SECOND - tick)*1.0;
+        var alpha = (now * TICKS_PER_SECOND - tick)*1.0;        
 
         var x = Math.floor(Math.sin(now) * 16 + 160);
         var y = Math.floor(Math.cos(now) * 16 + 120);
 
         //cena.render(ctx,alpha);
         
-        //experiência de resize
+        //faz resize e usa double buffer
         cena.render(bbctx,alpha);
         ctx.drawImage(bbuffer,0,0,width,height,0,0,tela.width,tela.height);
         

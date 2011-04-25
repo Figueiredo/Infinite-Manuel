@@ -10,17 +10,15 @@ function BgRenderer(lvl,largura,altura,dist)
     var width=largura;
     var height=altura;
     var distance=dist;
-    //var image = new Image(width,height);    
-    //var g = image.getContext("2d");
     var image= document.createElement("canvas");
     image.width=width;
     image.height=height;
     var g = image.getContext("2d");
     
-        var tmpcv=document.createElement("canvas");
-        tmpcv.width=width;
-        tmpcv.height=height;
-        var tmpg=tmpcv.getContext("2d");
+    var tmpcv=document.createElement("canvas");
+    tmpcv.width=width;
+    tmpcv.height=height;
+    var tmpg=tmpcv.getContext("2d");
 
     var updateArea=function(x0, y0, w, h)
     {        

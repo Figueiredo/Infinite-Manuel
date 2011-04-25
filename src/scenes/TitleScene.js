@@ -8,7 +8,7 @@ function TitleScene(compJogo)
     //array de input da cena
     var teclas = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
 
-    //função para mudar o estado de teclas de input na cena
+    //funÃ§Ã£o para mudar o estado de teclas de input na cena
     this.toggleKey=function(key,isPressed)
     {
         teclas[key]=isPressed;   

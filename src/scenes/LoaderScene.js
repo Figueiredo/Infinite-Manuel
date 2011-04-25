@@ -4,7 +4,7 @@ function LoaderScene(compJogo)
     var estado={t:-1,l:-1};
     var tick=0;
     var pontos=1;
-    var texto='A Carregar';
+    var texto='A Carregar... (X/X)';
 
     //array de input da cena
     var teclas = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
