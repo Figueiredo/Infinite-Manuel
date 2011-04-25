@@ -10,13 +10,10 @@ function MapScene(compJogo)
     var level=[];//[][]
     var data=[]; //[][]
 
-    var xManuel, yManuel;
-    var xManuelA, yManuelA;
-
+    var xManuel=0, yManuel=0;
+    var xManuelA=0, yManuelA=0;
+ 
     var tick=0;
-    //private GraphicsConfiguration graphicsConfiguration; //contexto de gráficosdo jogo
-    //private Image staticBg; //imagem do fundo
-    //private Graphics staticGr; //contexto de gráficos do fundo
     
     var moveTime = 0; 
     var worldNumber=-1; //número do mundo
@@ -71,7 +68,7 @@ function MapScene(compJogo)
         {
             for (var yy = 0; yy < 2; yy++)
             {
-                if (level[(x + xx) / 2][(y + yy) / 2] != TILE_WATER) return false;
+                if (level[Math.floor((x + xx) / 2)][Math.floor((y + yy) / 2)] != TILE_WATER) return false;
             }
         }
 
@@ -87,7 +84,7 @@ function MapScene(compJogo)
         {
             for (var y = 0; y < 240 / 16; y++)
             {
-                g.drawImage(map[worldNumber / 4][0], 0,0,16,16,x * 16, y * 16,16,16);
+                g.drawImage(map[Math.floor(worldNumber / 4)][0], 0,0,16,16,x * 16, y * 16,16,16);
                 if (level[x][y] == TILE_LEVEL)
                 {
                     var type = data[x][y];
@@ -175,7 +172,7 @@ function MapScene(compJogo)
         //random = new Random(seed);
 
         while (!generateLevel())
-            continue;
+            ;
         renderStatic(staticGr);
     }; 
     
@@ -420,7 +417,7 @@ function MapScene(compJogo)
         data[lowestX][lowestY] = -2;
 
         while (findConnection(width, height))
-            continue;
+            ;
 
         findCaps(width, height);
 
@@ -485,8 +482,8 @@ function MapScene(compJogo)
         xManuel += xManuelA;
         yManuel += yManuelA;
         tick++;
-        var x = xManuel / 16;
-        var y = yManuel / 16;
+        var x = Math.floor(xManuel / 16);
+        var y = Math.floor(yManuel / 16);
         if (level[x][y] == TILE_ROAD)
         {
             data[x][y] = 0;
@@ -500,7 +497,7 @@ function MapScene(compJogo)
         {
             xManuelA = 0;
             yManuelA = 0;
-            if (canEnterLevel && keys[ManuelC.KEY_JUMP])
+            if (canEnterLevel && teclas[manuelC.KEY_JUMP])
             {
                 if (level[x][y] == TILE_LEVEL && data[x][y] == -11)
                 {
@@ -545,34 +542,39 @@ function MapScene(compJogo)
                     }
                 }
             }
-            canEnterLevel = !teclas[ManuelC.KEY_JUMP];
+            canEnterLevel = !teclas[manuelC.KEY_JUMP];
 
-            if (keys[ManuelC.KEY_LEFT])
+            if (teclas[manuelC.KEY_LEFT])
             {
-                keys[ManuelC.KEY_LEFT] = false;
+                teclas[manuelC.KEY_LEFT] = false;
                 tryWalking(-1, 0);
             }
-            if (keys[ManuelC.KEY_RIGHT])
+            if (teclas[manuelC.KEY_RIGHT])
             {
-                keys[ManuelC.KEY_RIGHT] = false;
+                teclas[manuelC.KEY_RIGHT] = false;
                 tryWalking(1, 0);
             }
-            if (keys[ManuelC.KEY_UP])
+            if (teclas[manuelC.KEY_UP])
             {
-                keys[ManuelC.KEY_UP] = false;
+                teclas[manuelC.KEY_UP] = false;
                 tryWalking(0, -1);
             }
-            if (keys[ManuelC.KEY_DOWN])
+            if (teclas[manuelC.KEY_DOWN])
             {
-                keys[ManuelC.KEY_DOWN] = false;
+                teclas[manuelC.KEY_DOWN] = false;
                 tryWalking(0, 1);
             }
+            if (teclas[manuelC.SPACE])
+            {
+                teclas[manuelC.SPACE] = false;
+                nextWorld();
+            }            
         }        
         
     };
 
     //desenha a cena  
-    this.render= function(g,alfa)
+    this.render= function(g,alpha)
     {
         g.drawImage(staticBg, 0, 0,320,240,0,0,320,240);
         var map = Art.img[Art.map];
@@ -585,12 +587,12 @@ function MapScene(compJogo)
                 {
                     if (isWater(x * 2 - 1, y * 2 - 1))
                     {
-                        g.drawImage(map[15][4 + (tick / 6 + y) % 4],0,0,16,16, x * 16 - 8, y * 16 - 8, 16,16);
+                        g.drawImage(map[15][Math.floor(4 + (tick / 6 + y) % 4)],0,0,16,16, x * 16 - 8, y * 16 - 8, 16,16);
                     }
                 }
                 else if (level[x][y] == TILE_DECORATION)
                 {
-                    g.drawImage(map[(tick + y * 12) / 6 % 4][10 + worldNumber % 4],0,0,16,16, x * 16, y * 16,16,16);
+                    g.drawImage(map[Math.floor((tick + y * 12) / 6 % 4)][10 + worldNumber % 4],0,0,16,16, x * 16, y * 16,16,16);
                 }
                 else if (level[x][y] == TILE_LEVEL && data[x][y] == -2 && tick / 12 % 2 == 0)
                 {
@@ -600,7 +602,7 @@ function MapScene(compJogo)
         }
 //        if (!Manuel.large)
 //        {
-            g.drawImage(map[(tick) / 6 % 2][1],0,0,16,16, xManuel + (xManuelA * alpha), yManuel + (int) (yManuelA * alpha) - 6, 16,16);
+            g.drawImage(map[Math.floor((tick) / 6 % 2)][1],0,0,16,16, xManuel + Math.floor(xManuelA * alpha), yManuel + Math.floor((yManuelA * alpha)) - 6, 16,16);
 /*        }
         else
         {

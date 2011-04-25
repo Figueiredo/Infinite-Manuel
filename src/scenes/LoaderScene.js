@@ -2,11 +2,14 @@ function LoaderScene(compJogo)
 {
     var jogo=compJogo;
     var estado={t:-1,l:-1};
+    var tick=0;
+    var pontos=1;
+    var texto='A Carregar';
 
     //array de input da cena
     var teclas = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
 
-    //função para mudar o estado de teclas de input na cena
+    //funÃ§Ã£o para mudar o estado de teclas de input na cena
     this.toggleKey=function(key,isPressed)
     {
         teclas[key]=isPressed;   
@@ -27,6 +30,28 @@ function LoaderScene(compJogo)
             jogo.toTitle();
         }    
         estado = Art.status();
+        tick++;
+        if(tick%20==0)
+        {
+            pontos++;
+            if(pontos>3)
+            {
+                pontos=1;
+            }
+            texto='A Carregar';
+            for(var i=0;i<3;i++)
+            {
+                if(i<pontos)
+                {
+                    texto+='.';
+                }
+                else
+                {
+                    texto+=' ';
+                }
+            }
+            texto+=' ('+estado.l+'/'+estado.t+')';
+        }
     };
 
     //desenha a cena  
@@ -38,7 +63,7 @@ function LoaderScene(compJogo)
         ctx.fillStyle    = '#00f';
         ctx.font         = 'italic 12px sans-serif';
         ctx.textBaseline = 'top';
-        ctx.fillText  ('A Carregar... ('+estado.l+'/'+estado.t+')', 160, 120);        
+        ctx.fillText  (texto, 160, 120);        
     };
     
 }
