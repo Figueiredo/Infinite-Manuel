@@ -1,4 +1,4 @@
-function scene_basic(compJogo)
+function WinScene(compJogo)
 {
     
     var jogo=compJogo;
@@ -35,8 +35,8 @@ function scene_basic(compJogo)
     {
         ctx.fillStyle = '#8080a0';
         ctx.fillRect(0, 0, 320, 240);   
-        //g.drawImage(Art.endScene[tick/24%2][0], 160-48, 100-48, null);
-        ctx.drawImage(Art.img[Art.end][tick/24%2][0],0,0,96,96, 160-48, 100-48, 96,96);
+        //g.drawImage(Art.endScene[tick/24%2][0], 160-48, 100-48, null);        
+        ctx.drawImage(Art.img[Art.end][Math.floor((tick/24)%2)][0],0,0,96,96, 160-48, 100-48, 96,96);
         //drawString(g, scrollMessage, 160-scrollMessage.length()*4, 160, 0);        
         
     };

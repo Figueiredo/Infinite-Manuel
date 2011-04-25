@@ -8,6 +8,7 @@ function cArt()
     this.logo = 1;
     this.title = 2;    
 	this.map=3;
+    this.end=4;
     
     var status=false;    
     var loaded=0;
@@ -16,7 +17,8 @@ function cArt()
                 "img/bgsheet.png",
                 "img/logo.png",
                 "img/title.png",
-                "img/worldmap.png"     
+                "img/worldmap.png",
+                "img/endscene.png"
         ];
         
     var total=srcs.length;        
@@ -86,6 +88,7 @@ function cArt()
     {    
         this.img[this.bg]=this.cutImage(this.bg,32,32);
         this.img[this.map]=this.cutImage(this.map,16,16);
+        this.img[this.end]=this.cutImage(this.end,96,96);
     };
     
     

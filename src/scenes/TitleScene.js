@@ -25,7 +25,7 @@ function TitleScene(compJogo)
     this.update = function()
     {
         tick++;
-        if(teclas[manuelC.SPACE])
+        if(teclas[manuelC.KEY_JUMP])
         {        
             jogo.startGame();
         }        

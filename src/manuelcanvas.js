@@ -24,7 +24,7 @@ function manuelcanvas()
     
     this.win=function()
     {
-        cena = new scene_basic();
+        cena = new WinScene(this);
         cena.init();
     };
     
@@ -75,6 +75,14 @@ function manuelcanvas()
             if(e.keyCode==40)
             {
                 cena.toggleKey(manuelC.KEY_DOWN,true);
+            }      
+            if(e.keyCode==83)
+            {
+                cena.toggleKey(manuelC.KEY_JUMP,true);
+            }
+            if(e.keyCode==65)
+            {
+                cena.toggleKey(manuelC.KEY_RUN,true);
             }            
         };
         
@@ -99,6 +107,14 @@ function manuelcanvas()
             if(e.keyCode==40)
             {
                 cena.toggleKey(manuelC.KEY_DOWN,false);
+            }            
+            if(e.keyCode==83)
+            {
+                cena.toggleKey(manuelC.KEY_JUMP,false);
+            }
+            if(e.keyCode==65)
+            {
+                cena.toggleKey(manuelC.KEY_RUN,false);
             }            
         };
 
