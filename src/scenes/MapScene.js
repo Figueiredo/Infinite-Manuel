@@ -57,7 +57,7 @@ function MapScene(compJogo)
         if (level[x][y] == TILE_ROAD) return true;
         if (level[x][y] == TILE_LEVEL) return true;
         return false;
-    }
+    };
 
     var isWater=function( x, y)
     {
@@ -73,7 +73,7 @@ function MapScene(compJogo)
         }
 
         return true;
-    }    
+    };    
     
     var renderStatic=function( g )
     {
@@ -508,10 +508,10 @@ function MapScene(compJogo)
                     {
                         //Manuel.levelString = (worldNumber + 1) + "-";
                         var difficulty = worldNumber+1;
-                        var type = LevelGenerator.TYPE_OVERGROUND;
-                        if (data[x][y] > 1 && new Random(seed + x * 313211 + y * 534321).nextInt(3) == 0)
+                        var type = LevelTypes.OVERGROUND;//LevelGenerator.TYPE_OVERGROUND;
+                        if (data[x][y] > 1 && nextInt(3) == 0)
                         {
-                            type = LevelGenerator.TYPE_UNDERGROUND;
+                            type = LevelTypes.UNDERGROUND;//LevelGenerator.TYPE_UNDERGROUND;
                         }
                         if (data[x][y] < 0)
                         {
@@ -530,7 +530,7 @@ function MapScene(compJogo)
                                 difficulty += 1;
                             }
 
-                            type = LevelGenerator.TYPE_CASTLE;
+                            type = LevelTypes.CASTLE;//LevelGenerator.TYPE_CASTLE;
                         }
                         else
                         {
@@ -539,6 +539,7 @@ function MapScene(compJogo)
 
                         //Art.stopMusic();
                         //jogo.startLevel(seed * x * y + x * 31871 + y * 21871, difficulty, type);
+                        jogo.startLevel( x * y + x * 31871 + y * 21871, difficulty, type);
                     }
                 }
             }
@@ -625,6 +626,7 @@ function MapScene(compJogo)
     
     this.levelWon=function()
     {
+        clearTeclas();
         var x = xManuel / 16;
         var y = yManuel / 16;
         if (data[x][y] == -2)
@@ -635,6 +637,13 @@ function MapScene(compJogo)
         if (data[x][y] != -3) data[x][y] = 0;
         else data[x][y] = -10;
         renderStatic(staticGr);
-    };    
+    }; 
+    
+    var clearTeclas=function()
+    {
+        for(var i=0;i<teclas.length;i++)
+            teclas[i]=false;
+        
+    };
     
 }

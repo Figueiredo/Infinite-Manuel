@@ -10,6 +10,7 @@ function cArt()
 	this.map=3;
     this.end=4;
     this.font=5;
+    this.level=6;
     
     var status=false;    
     var loaded=0;
@@ -20,7 +21,8 @@ function cArt()
                 "img/title.png",
                 "img/worldmap.png",
                 "img/endscene.png",
-                "img/font.png"
+                "img/font.png",
+                "img/mapsheet.png"
         ];
         
     var total=srcs.length;        
@@ -91,6 +93,7 @@ function cArt()
         this.img[this.map]=this.cutImage(this.map,16,16);
         this.img[this.end]=this.cutImage(this.end,96,96);
         this.img[this.font]=this.cutImage(this.font,8,8);
+        this.img[this.level]=this.cutImage(this.level,16,16);
     };
     
     
