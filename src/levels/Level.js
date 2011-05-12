@@ -13,16 +13,16 @@ function Level(w,h)
     ];
 
     //byte[]
-    var TILE_BEHAVIORS = [];// new Array(256);
+    this.TILE_BEHAVIORS = [];// new Array(256);
 
-    var BIT_BLOCK_UPPER = 1 << 0;
-    var BIT_BLOCK_ALL = 1 << 1;
-    var BIT_BLOCK_LOWER = 1 << 2;
-    var BIT_SPECIAL = 1 << 3;
-    var BIT_BUMPABLE = 1 << 4;
-    var BIT_BREAKABLE = 1 << 5;
-    var BIT_PICKUPABLE = 1 << 6;
-    var BIT_ANIMATED = 1 << 7;
+    this.BIT_BLOCK_UPPER = 1 << 0;
+    this.BIT_BLOCK_ALL = 1 << 1;
+    this.BIT_BLOCK_LOWER = 1 << 2;
+    this.BIT_SPECIAL = 1 << 3;
+    this.BIT_BUMPABLE = 1 << 4;
+    this.BIT_BREAKABLE = 1 << 5;
+    this.BIT_PICKUPABLE = 1 << 6;
+    this.BIT_ANIMATED = 1 << 7;
 
 //contrutor--------------------------------------------
     this.width=w;

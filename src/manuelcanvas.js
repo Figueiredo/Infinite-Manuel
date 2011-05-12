@@ -195,4 +195,30 @@ function manuelcanvas()
         setTimeout(mainloop,5);
     };
     
+    
+    this.startLevel=function(seed, difficulty, type)
+    {
+        cena= new LevelScene( this, seed, difficulty, type);
+        //scene.setSound(sound);
+        cena.init();
+    };
+
+    this.levelFailed=function()
+    {
+        cena = mapScene;
+        //mapScene.startMusic();
+        //Mario.lives--;
+        //if (Mario.lives == 0)
+        //{
+        //    lose();
+        //}
+    };
+    
+    this.levelWon=function()
+    {
+        cena = mapScene;
+        //mapScene.startMusic();
+        mapScene.levelWon();
+    };
+    
 }
