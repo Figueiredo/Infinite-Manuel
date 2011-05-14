@@ -28,9 +28,26 @@
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
   </style>
+  
+<script type="text/javascript" src="src/manuelcanvas.js"></script>
+<script type="text/javascript" src="src/consts.js"></script>
+<script type="text/javascript" src="src/Art.js"></script>
+<script type="text/javascript" src="src/BgRenderer.js"></script>
+<script type="text/javascript" src="src/LevelRenderer.js"></script>
+<script type="text/javascript" src="src/scenes/TitleScene.js"></script>
+<script type="text/javascript" src="src/scenes/scene_basic.js"></script>
+<script type="text/javascript" src="src/scenes/LoaderScene.js"></script>
+<script type="text/javascript" src="src/scenes/MapScene.js"></script>
+<script type="text/javascript" src="src/scenes/WinScene.js"></script>
+<script type="text/javascript" src="src/scenes/LevelScene.js"></script>
+<script type="text/javascript" src="src/levels/BgLevelGenerator.js"></script>
+<script type="text/javascript" src="src/levels/LevelGenerator.js"></script>
+<script type="text/javascript" src="src/levels/Level.js"></script>
+<script type="text/javascript" src="src/levels/ImprovedNoise.js"></script>  
+  
 </head>
 
-<body>
+<body onload="javascript:new manuelcanvas().start();">
   <a href="http://github.com/Figueiredo/Infinite-Manuel"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 
   <div id="container">
@@ -51,7 +68,18 @@
 
     <h2>Authors</h2>
 <p>Ricardo Figueiredo<br/><br/>      </p>
-
+<h2>Game</h2>
+<p>Milestone 4
+<br/>      </p>
+<div>
+<div><canvas id="tela" width="640px" height="480px">Your browser must support canvas</canvas></div>
+<div id="controls">
+Setas para mover<br/>
+S para saltar /avançar nos ecrãs<br/>
+A para correr<br/>
+Espaço para saltar mundo no mapa/ganhar nivel<br/>
+</div>  
+</div>
 
     <h2>Download</h2>
     <p>
@@ -69,6 +97,8 @@
     </div>
 
   </div>
+  
+
 
   
 </body>
