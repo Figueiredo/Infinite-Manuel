@@ -3,9 +3,12 @@ function LevelScene (compJogo,seed, difficulty,type)
     //private List<Sprite> sprites = new ArrayList<Sprite>();
     //private List<Sprite> spritesToAdd = new ArrayList<Sprite>();
     //private List<Sprite> spritesToRemove = new ArrayList<Sprite>();
+    var sprites=[];
+    var spritesToAdd=[];
+    var spritesToRemove=[];
 
     var level; //Level
-    //public Manuel manuel;
+    this.manuel=null; //Manuel
     var xCam=0.0, yCam=0.0, xCamO=0.0, yCamO=0.0; //float
     var tmpImage; //image
     var tick=0; //int
@@ -55,7 +58,7 @@ function LevelScene (compJogo,seed, difficulty,type)
 
         paused = false;
         //Sprite.spriteContext = this;
-        //sprites.clear();
+        sprites=[];
         layer = new LevelRenderer(level, 320, 240);
         for (var i = 0; i < 2; i++)
         {
@@ -65,8 +68,8 @@ function LevelScene (compJogo,seed, difficulty,type)
             var bgLevel = createBGLevel(w / 32 + 1, h / 32 + 1, i == 0, levelType);
             bgLayer[i] = new BgRenderer(bgLevel,  320, 240, scrollSpeed);
         }
-        //manuel = new Manuel(this);
-        //sprites.add(manuel);
+        manuel = new Manuel(this);
+        sprites.push(manuel);
         startTime = 1;
         
         timeLeft = 200*15;
@@ -101,7 +104,7 @@ function LevelScene (compJogo,seed, difficulty,type)
         timeLeft--;
         if (timeLeft==0)
         {
-            //manuel.die();
+            manuel.die();
         }
         xCamO = xCam;
         yCamO = yCam;
@@ -111,7 +114,7 @@ function LevelScene (compJogo,seed, difficulty,type)
             startTime++;
         }
 
-        var targetXCam = 0;//manuel.x - 160; //foat
+        var targetXCam = manuel.x - 160; //foat
 
         xCam = targetXCam;
 
@@ -121,29 +124,30 @@ function LevelScene (compJogo,seed, difficulty,type)
 
         fireballsOnScreen = 0;
 
-/*        for (Sprite sprite : sprites)
+        for (var sprite in sprites)
         {
             if (sprite != manuel)
             {
-                float xd = sprite.x - xCam;
-                float yd = sprite.y - yCam;
+                var xd = sprite.x - xCam;
+                var yd = sprite.y - yCam;
                 if (xd < -64 || xd > 320 + 64 || yd < -64 || yd > 240 + 64)
                 {
                     removeSprite(sprite);
                 }
                 else
                 {
-                    if (sprite instanceof Fireball)
+                  /*  if (sprite instanceof Fireball)
                     {
                         fireballsOnScreen++;
                     }
+                    */
                 }
             }
         }
-*/
+
         if (paused)
         {
-  /*          for (Sprite sprite : sprites)
+            for (var sprite in sprites)
             {
                 if (sprite == manuel)
                 {
@@ -154,7 +158,7 @@ function LevelScene (compJogo,seed, difficulty,type)
                     sprite.tickNoMove();
                 }
             }
-*/        }
+        }
         else
         {
             tick++;
@@ -163,15 +167,15 @@ function LevelScene (compJogo,seed, difficulty,type)
             var hasShotCannon = false; //bool
             var xCannon = 0; //int
 
-/*            for (var x = Math.floor( xCam / 16 - 1); x <= Math.floor( (xCam + layer.width) / 16 + 1); x++)
+            for (var x = Math.floor( xCam / 16 - 1); x <= Math.floor( (xCam + layer.width) / 16 + 1); x++)
                 for (var y = Math.floor( yCam / 16 - 1); y <= Math.floor( (yCam + layer.height) / 16 + 1); y++)
                 {
                     var dir = 0; //int
 
-                    //if (x * 16 + 8 > manuel.x + 16) dir = -1;
-                    //if (x * 16 + 8 < manuel.x - 16) dir = 1;
+                    if (x * 16 + 8 > manuel.x + 16) dir = -1;
+                    if (x * 16 + 8 < manuel.x - 16) dir = 1;
 
-                    //SpriteTemplate st = level.getSpriteTemplate(x, y);
+                    var st = level.getSpriteTemplate(x, y);
 
                    if (st != null)
                     {
@@ -189,41 +193,43 @@ function LevelScene (compJogo,seed, difficulty,type)
                     if (dir != 0)
                     {
                         var b = level.getBlock(x, y); //byte
-                        if (((Level.TILE_BEHAVIORS[b & 0xff]) & Level.BIT_ANIMATED) > 0)
+                      /*  if (((Level.TILE_BEHAVIORS[b & 0xff]) & Level.BIT_ANIMATED) > 0)
                         {
                             if ((b % 16) / 4 == 3 && b / 16 == 0)
                             {
                                 if ((tick - x * 2) % 100 == 0)
                                 {
                                     xCannon = x;
-                                    for (int i = 0; i < 8; i++)
+                                    for (var i = 0; i < 8; i++)
                                     {
-                                        addSprite(new Sparkle(x * 16 + 8, y * 16 + (int) (Math.random() * 16), (float) Math.random() * dir, 0, 0, 1, 5));
+                                        //addSprite(new Sparkle(x * 16 + 8, y * 16 + (int) (Math.random() * 16), (float) Math.random() * dir, 0, 0, 1, 5));
                                     }
-                                    addSprite(new BulletBill(this, x * 16 + 8 + dir * 8, y * 16 + 15, dir));
+                                    //addSprite(new BulletBill(this, x * 16 + 8 + dir * 8, y * 16 + 15, dir));
                                     hasShotCannon = true;
                                 }
                             }
                         }
-                    }
+                    */}
                 }
 
             if (hasShotCannon)
             {
-                sound.play(Art.samples[Art.SAMPLE_CANNON_FIRE], new FixedSoundSource(xCannon * 16, yCam + 120), 1, 1, 1);
+                //sound.play(Art.samples[Art.SAMPLE_CANNON_FIRE], new FixedSoundSource(xCannon * 16, yCam + 120), 1, 1, 1);
             }
 
-            for (Sprite sprite : sprites)
+            for (var sprite in sprites)
             {
-                sprite.tick();
+                if(sprite.tick)
+                    sprite.tick();
             }
 
-            for (Sprite sprite : sprites)
+            for (var sprite in sprites)
             {
-                sprite.collideCheck();
+                if(sprite.collideCheck)
+                    sprite.collideCheck();
             }
 
-            for (Shell shell : shellsToCheck)
+/*            for (Shell shell : shellsToCheck)
             {
                 for (Sprite sprite : sprites)
                 {
@@ -239,10 +245,10 @@ function LevelScene (compJogo,seed, difficulty,type)
                         }
                     }
                 }
-            }
-            shellsToCheck.clear();
+            }*/
+            //shellsToCheck.clear();
 
-            for (Fireball fireball : fireballsToCheck)
+        /*    for (Fireball fireball : fireballsToCheck)
             {
                 for (Sprite sprite : sprites)
                 {
@@ -254,15 +260,15 @@ function LevelScene (compJogo,seed, difficulty,type)
                         }
                     }
                 }
-            }
-            fireballsToCheck.clear();
-*/        }
-/*
-        sprites.addAll(0, spritesToAdd);
-        sprites.removeAll(spritesToRemove);
-        spritesToAdd.clear();
-        spritesToRemove.clear();
-        */
+            }*/
+            //fireballsToCheck.clear();
+        }
+
+        //sprites.addAll(0, spritesToAdd);
+        //sprites.removeAll(spritesToRemove);
+        spritesToAdd=[];
+        spritesToRemove=[];
+        
     };
     
     //private DecimalFormat df = new DecimalFormat("00");
@@ -270,10 +276,10 @@ function LevelScene (compJogo,seed, difficulty,type)
 
     this.render=function(g, alpha)
     {
-        //var xCam = Math.floor( (manuel.xOld + (manuel.x - manuel.xOld) * alpha) - 160); //int
-        //var yCam = Math.floor( (manuel.yOld + (manuel.y - manuel.yOld) * alpha) - 120); //int
-        var xCam=0;
-        var yCam=0;
+        var xCam = Math.floor( (manuel.xOld + (manuel.x - manuel.xOld) * alpha) - 160); //int
+        var yCam = Math.floor( (manuel.yOld + (manuel.y - manuel.yOld) * alpha) - 120); //int
+        //var xCam=0;
+        //var yCam=0;
 
         if (xCam < 0) xCam = 0;
         if (yCam < 0) yCam = 0;
@@ -288,33 +294,42 @@ function LevelScene (compJogo,seed, difficulty,type)
         }
 
         g.translate(-xCam, -yCam);
-/*        for (Sprite sprite : sprites)
+        for (var sprite in sprites)
         {
-            if (sprite.layer == 0) sprite.render(g, alpha);
+            if (sprite.layer == 0)
+            {
+                alert("bla");
+                sprite.render(g, alpha);
+            }
         }
-*/        g.translate(xCam, yCam);
+        g.translate(xCam, yCam);
 
         layer.setCam(xCam, yCam);
         layer.render(g, tick, paused?0:alpha);
-        //layer.renderExit0(g, tick, paused?0:alpha, manuel.winTime==0);
+        layer.renderExit0(g, tick, paused?0:alpha, manuel.winTime==0);
 
         g.translate(-xCam, -yCam);
-  /*      for (Sprite sprite : sprites)
+        //for (var sprite in sprites)
+        for(var sp=0;sp<sprites.length;sp++)
         {
-            if (sprite.layer == 1) sprite.render(g, alpha);
+            if (sprites[sp].layer == 1)
+            {
+                sprites[sp].render(g, alpha);
+            }
         }
-*/        g.translate(xCam, yCam);
+
+        g.translate(xCam, yCam);
         //g.setColor(Color.BLACK);
         layer.renderExit1(g, tick, paused?0:alpha);
         
-        drawStringDropShadow(g, "MANUEL " + "03", 0, 0, 7);//df.format(Manuel.lives), 0, 0, 7);
+        drawStringDropShadow(g, "MANUEL " + manuel.lives, 0, 0, 7);
         drawStringDropShadow(g, "00000000", 0, 1, 7);
         
         drawStringDropShadow(g, "COIN", 14, 0, 7);
-        drawStringDropShadow(g, " "+"03", 14, 1, 7);//df.format(Manuel.coins), 14, 1, 7);
+        drawStringDropShadow(g, " "+manuel.coins, 14, 1, 7);
 
         drawStringDropShadow(g, "WORLD", 24, 0, 7);
-        //drawStringDropShadow(g, " "+Manuel.levelString, 24, 1, 7);
+        drawStringDropShadow(g, " "+manuel.levelString, 24, 1, 7);
 
         drawStringDropShadow(g, "TIME", 35, 0, 7);
         var time = Math.floor((timeLeft+15-1)/15);
@@ -405,13 +420,13 @@ function LevelScene (compJogo,seed, difficulty,type)
 
     this.addSprite=function( sprite)
     {
-        //spritesToAdd.add(sprite);
-        //sprite.tick();
+        spritesToAdd.add(sprite);
+        sprite.tick();
     };
 
     this.removeSprite=function( sprite)
     {
-        //spritesToRemove.add(sprite);
+        spritesToRemove.add(sprite);
     };
 
     this.getX=function( alpha)

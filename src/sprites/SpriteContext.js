@@ -1,5 +1,10 @@
 function SpriteContext() /*interface*/
 {
-    this.addSprite=function(/*Sprite*/ sprite){};
-    this.removeSprite=function(/*Sprite*/ sprite){};
+
 }
+
+SpriteContext.prototype.addSprite = function( /*Sprite*/ sprite)
+{};
+
+SpriteContext.prototype.removeSprite = function( /*Sprite*/ sprite)
+{};

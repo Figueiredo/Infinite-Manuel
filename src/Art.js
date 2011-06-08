@@ -11,6 +11,9 @@ function cArt()
     this.end=4;
     this.font=5;
     this.level=6;
+    this.manuel=7;
+    this.pequenoManuel=8;
+    this.fogoManuel=9;
     
     var status=false;    
     var loaded=0;
@@ -22,7 +25,10 @@ function cArt()
                 "img/worldmap.png",
                 "img/endscene.png",
                 "img/font.png",
-                "img/mapsheet.png"
+                "img/mapsheet.png",
+                "img/manuelsheet.png",
+                "img/smallmanuelsheet.png",
+                "img/firemanuelsheet.png"
         ];
         
     var total=srcs.length;        
@@ -93,7 +99,10 @@ function cArt()
         this.img[this.map]=this.cutImage(this.map,16,16);
         this.img[this.end]=this.cutImage(this.end,96,96);
         this.img[this.font]=this.cutImage(this.font,8,8);
-        this.img[this.level]=this.cutImage(this.level,16,16);
+        this.img[this.level]=this.cutImage(this.level,16,16);        
+        this.img[this.manuel]=this.cutImage(this.manuel,32,32);
+        this.img[this.pequenoManuel]=this.cutImage(this.pequenoManuel,16,16);
+        this.img[this.fogoManuel]=this.cutImage(this.fogoManuel,32,32);
     };
     
     

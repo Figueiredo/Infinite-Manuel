@@ -1,26 +1,23 @@
-function  SpriteTemplate(_type,_winged)
+function SpriteTemplate(_type, _winged)
 {
     this.lastVisibleTick = -1; //int
-    this.sprite=null; //sprite
+    this.sprite = null; //sprite
     this.isDead = false; //boolean
-    var winged=_winged; //boolean
-    
-    var type=_type; //int
-    
-    
-    this.spawn=function(/*LevelScene*/ world, /*int*/ x, /*int*/ y, /*int*/ dir) //void
-    {
-        if (isDead) return;
+    this.winged = _winged; //boolean
+    this.type = _type; //int
+} 
 
-        if (type==Enemy.ENEMY_FLOWER)
-        {
-            sprite = new FlowerEnemy(world, x*16+15, y*16+24);
-        }
-        else
-        {
-            sprite = new Enemy(world, x*16+8, y*16+15, dir, type, winged);
-        }
-        sprite.spriteTemplate = this;
-        world.addSprite(sprite);
-    };
-}
+SpriteTemplate.prototype.spawn = function( /*LevelScene*/ world, /*int*/ x, /*int*/ y, /*int*/ dir) //void
+{
+    if (this.isDead) return;
+    if (this.type == Enemy.ENEMY_FLOWER)
+    {
+        this.sprite = new FlowerEnemy(world, x * 16 + 15, y * 16 + 24);
+    }
+    else
+    {
+        this.sprite = new Enemy(world, x * 16 + 8, y * 16 + 15, dir, this.type, this.winged);
+    }
+    this.sprite.spriteTemplate = this;
+    world.addSprite(this.sprite);
+};
