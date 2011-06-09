@@ -117,6 +117,7 @@ LevelScene.prototype.update=function()
     //especial
     if(this.teclas[Manuel.SPACE])
     {
+        this.teclas[Manuel.SPACE]=false;
         this.renderer.levelWon();
     }        
     
@@ -196,13 +197,13 @@ LevelScene.prototype.update=function()
 
                 var st = this.level.getSpriteTemplate(x, y);
 
-               if (st !== null)
+               if (st !== null&& st!== undefined )
                 {
                     if (st.lastVisibleTick != this.tick - 1)
                     {
-                        if (st.sprite === null || !sprites.contains(st.sprite))
+                        if (st.sprite === null || this.sprites.indexOf(st.sprite)==-1)//!this.sprites.contains(st.sprite))
                         {
-                            st.spawn(this, x, y, dir);
+                            //st.spawn(this, x, y, dir);
                         }
                     }
 

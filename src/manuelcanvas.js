@@ -150,7 +150,7 @@ manuelcanvas.prototype.mainloop = function()
 
     //faz resize e usa double buffer
     this.cena.render(this.bbctx, alpha);
-    this.ctx.drawImage(this.bbuffer, 0, 0, this.width, this.height, 0, 0, this.tela.width, this.tela.height);
+    this.ctx.drawImage(this.bbuffer, 0, 0, this.tela.width, this.tela.height);
 
     this.renderedFrames++;
 
