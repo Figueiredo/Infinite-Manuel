@@ -22,7 +22,6 @@ function cManuel() /*extends Sprite*/
 
     this.width = 4; //int
     this.height = 24; //int
-
     this.facing = 0;
     this.powerUpTime = 0;
 
@@ -55,7 +54,8 @@ cManuel.prototype = new Sprite();
  */
 cManuel.prototype.init = function()
 {
-    this.sheet = Art.img[Art.pequenoManuel]; //image[][]    
+    //this.sheet = Art.pequenoManuel; //image[][]    
+    this.setLarge(false, false);
 };
 
 /**
@@ -119,7 +119,7 @@ cManuel.prototype.calcPic = function()
     }
     else
     {
-        runFrame = (Math.floor(runTime / 20)) % 2;
+        runFrame = (Math.floor(this.runTime / 20)) % 2;
         if (this.carried === null && Math.abs(this.xa) > 10) runFrame += 2;
         if (this.carried !== null) runFrame += 8;
         if (!this.onGround)
@@ -166,8 +166,8 @@ cManuel.prototype.blink = function( /*boolean*/ on)
 
     if (this.large)
     {
-        this.sheet = Art.img[Art.manuel];
-        if (this.fire) this.sheet = Art.img[Art.fireManuel];
+        this.sheet = Art.manuel;
+        if (this.fire) this.sheet = Art.fireManuel;
 
         this.xPicO = 16;
         this.yPicO = 31;
@@ -176,7 +176,7 @@ cManuel.prototype.blink = function( /*boolean*/ on)
     }
     else
     {
-        this.sheet = Art.img[Art.pequenoManuel];
+        this.sheet = Art.pequenoManuel;
 
         this.xPicO = 8;
         this.yPicO = 15;

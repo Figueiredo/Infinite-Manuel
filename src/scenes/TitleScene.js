@@ -18,7 +18,7 @@ TitleScene.prototype.init = function()
 TitleScene.prototype.update = function()
 {
     this.tick++;
-    if (this.teclas[manuelC.KEY_JUMP])
+    if (this.teclas[Manuel.KEY_JUMP])
     {
         this.jogo.startGame();
     }
@@ -35,6 +35,6 @@ TitleScene.prototype.render = function(ctx, alpha)
     this.bgLayer1.render(ctx, this.tick, alpha);
     this.bgLayer0.render(ctx, this.tick, alpha);
 
-    ctx.drawImage(Art.img[Art.logo], 0, 0, Art.img[Art.logo].width, Art.img[Art.logo].height, 0, yo, Art.img[Art.logo].width, Art.img[Art.logo].height);
-    ctx.drawImage(Art.img[Art.title], 0, 0, Art.img[Art.title].width, Art.img[Art.title].height, 0, 120, Art.img[Art.title].width, Art.img[Art.title].height);
+    ctx.drawImage(Art.logo, 0, 0, Art.logo.width, Art.logo.height, 0, yo, Art.logo.width, Art.logo.height);
+    ctx.drawImage(Art.title, 0, 0, Art.title.width, Art.title.height, 0, 120, Art.title.width, Art.title.height);
 };

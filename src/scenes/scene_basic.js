@@ -8,7 +8,7 @@ scene_basic.prototype = new Scene();
 //actualiza a cena
 scene_basic.prototype.update = function()
 {
-    if (this.teclas[manuelC.SPACE])
+    if (this.teclas[Manuel.SPACE])
     {
         this.cor = 'rgb(' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ')';
     }

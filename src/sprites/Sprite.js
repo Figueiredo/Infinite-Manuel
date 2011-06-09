@@ -34,7 +34,8 @@ Sprite.prototype.render = function( /*Graphics*/ og, /*float*/ alpha)
     var xPixel = Math.floor((this.xOld + (this.x - this.xOld) * alpha) - this.xPicO);
     var yPixel = Math.floor((this.yOld + (this.y - this.yOld) * alpha) - this.yPicO);
 
-    og.drawImage(this.sheet[this.xPic][this.yPic], xPixel + (this.xFlipPic ? this.wPic : 0), yPixel + (this.yFlipPic ? this.hPic : 0), this.xFlipPic ? -this.wPic : this.wPic, this.yFlipPic ? -this.hPic : this.hPic, null);
+    og.drawImage(this.sheet[this.xPic][this.yPic], xPixel + (this.xFlipPic ? this.wPic : 0), yPixel + (this.yFlipPic ? this.hPic : 0), this.xFlipPic ? -this.wPic : this.wPic, this.yFlipPic ? -this.hPic : this.hPic);
+
 };
 
 Sprite.prototype.tick = function()

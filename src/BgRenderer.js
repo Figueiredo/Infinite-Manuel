@@ -35,7 +35,7 @@ function BgRenderer(lvl,largura,altura,dist)
             {
                 var b = level.getBlock(x, y) & 0xff;                
                 //g.drawImage(Art.bg[b % 8][b / 8], (x << 5) - xCam, (y << 5) - yCam-16, null);
-                var tile=Art.img[Art.bg][b % 8][Math.floor(b / 8)];
+                var tile=Art.bg[b % 8][Math.floor(b / 8)];
                 g.drawImage(tile, 0,0,tile.width,tile.height, (x << 5) - xCam, (y << 5) - yCam-16,tile.width,tile.height);
             }
         }

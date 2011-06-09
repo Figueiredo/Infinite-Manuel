@@ -60,31 +60,31 @@ manuelcanvas.prototype.handlekeys = function(key, press)
 {
     if (key == 32)
     {
-        this.cena.toggleKey(manuelC.SPACE, press);
+        this.cena.toggleKey(Manuel.SPACE, press);
     }
     if (key == 37)
     {
-        this.cena.toggleKey(manuelC.KEY_LEFT, press);
+        this.cena.toggleKey(Manuel.KEY_LEFT, press);
     }
     if (key == 38)
     {
-        this.cena.toggleKey(manuelC.KEY_UP, press);
+        this.cena.toggleKey(Manuel.KEY_UP, press);
     }
     if (key == 39)
     {
-        this.cena.toggleKey(manuelC.KEY_RIGHT, press);
+        this.cena.toggleKey(Manuel.KEY_RIGHT, press);
     }
     if (key == 40)
     {
-        this.cena.toggleKey(manuelC.KEY_DOWN, press);
+        this.cena.toggleKey(Manuel.KEY_DOWN, press);
     }
     if (key == 83)
     {
-        this.cena.toggleKey(manuelC.KEY_JUMP, press);
+        this.cena.toggleKey(Manuel.KEY_JUMP, press);
     }
     if (key == 65)
     {
-        this.cena.toggleKey(manuelC.KEY_RUN, press);
+        this.cena.toggleKey(Manuel.KEY_RUN, press);
     }
 };
 

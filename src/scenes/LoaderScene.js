@@ -1,3 +1,6 @@
+/**
+ * 
+ */ 
 function LoaderScene(compJogo)
 {
     this.jogo = compJogo;
@@ -15,7 +18,6 @@ LoaderScene.prototype = new Scene();
 //inicializa a cena
 LoaderScene.prototype.init = function()
 {
-    Art = new cArt();
     Art.Load();
 };
 
@@ -24,9 +26,10 @@ LoaderScene.prototype.update = function()
 {
     if (Art.statusLoaded())
     {
+        Manuel.init();
         this.jogo.toTitle();
     }
-    this.estado = Art.status();
+    this.estado = Art.getStatus();
     this.tick++;
     if (this.tick % 20 === 0)
     {

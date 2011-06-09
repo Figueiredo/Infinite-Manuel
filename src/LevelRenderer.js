@@ -37,7 +37,7 @@ function LevelRenderer ( lvl, largura, altura)
             //    if (((Level.TILE_BEHAVIORS[b]) & Level.BIT_ANIMATED) == 0)
              //   {                
                     //g.drawImage(Art.level[b % 16][b / 16], (x << 4) - xCam, (y << 4) - yCam, null);
-                    var tile=Art.img[Art.level][b % 16][Math.floor(b / 16)];                
+                    var tile=Art.level[b % 16][Math.floor(b / 16)];                
                     g.drawImage(tile, 0,0,tile.width,tile.height, (x << 4) - xCam, (y << 4) - yCam,tile.width,tile.height);
               //  }
             }
@@ -113,7 +113,7 @@ function LevelRenderer ( lvl, largura, altura)
                     
                     if (yo > 0) 
                     yo = Math.floor ( Math.sin((yo - alpha) / 4.0 * Math.PI) * 8);
-                    var tile = Art.img[Art.level][(b % 16) / 4 * 4 + animTime][b / 16];
+                    var tile = Art.level[(b % 16) / 4 * 4 + animTime][b / 16];
                     g.drawImage(tile,0,0,tile.width,tile.height, (x << 4) - xCam, (y << 4) - yCam - yo, tile.width,tile.height);
                 }
 
@@ -182,15 +182,15 @@ function LevelRenderer ( lvl, largura, altura)
         for (var y = level.yExit - 8; y < level.yExit; y++)
         {
             //g.drawImage(Art.level[12][y == level.yExit - 8 ? 4 : 5], (level.xExit << 4) - xCam - 16, (y << 4) - yCam, null);
-            var tile=Art.img[Art.level][12][y == level.yExit - 8 ? 4 : 5];
+            var tile=Art.level[12][y == level.yExit - 8 ? 4 : 5];
             g.drawImage(tile,0,0,tile.width,tile.height, (level.xExit << 4) - xCam - 16, (y << 4) - yCam, tile.width,tile.height);
         }
         var yh = level.yExit * 16 - Math.floor((Math.sin((tick + alpha) / 20) * 0.5 + 0.5) * 7 * 16) - 8;
         if (bar)
         {
-            var tile = Art.img[Art.level][12][3];
+            var tile = Art.level[12][3];
             g.drawImage(tile,0,0,tile.width,tile.height, (level.xExit << 4) - xCam - 16, yh - yCam, tile.width,tile.height);
-            tile = Art.img[Art.level][13][3];
+            tile = Art.level[13][3];
             g.drawImage(tile,0,0,tile.width,tile.height, (level.xExit << 4) - xCam, yh - yCam, tile.width,tile.height);
         }
     };
@@ -200,7 +200,7 @@ function LevelRenderer ( lvl, largura, altura)
     {
         for (var y = level.yExit - 8; y < level.yExit; y++)
         {
-            var tile=Art.img[Art.level][13][y == level.yExit - 8 ? 4 : 5];
+            var tile=Art.level[13][y == level.yExit - 8 ? 4 : 5];
             g.drawImage(tile,0,0,tile.width,tile.height, (level.xExit << 4) - xCam - 16, (y << 4) - yCam, tile.width,tile.height);                        
         }
     };
